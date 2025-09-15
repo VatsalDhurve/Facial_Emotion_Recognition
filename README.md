@@ -60,10 +60,8 @@ A **custom dataset** was collected containing **2,421 thermal images** of **12 s
 ---
 
 ## 📂 Repository Structure  
-Facial_Emotion_Recognition/
-│── code/           # Training scripts, model definitions, utilities
-│── outputs/        # Logs, training curves, confusion matrices
-│── README.md       # Project documentation
+- `src/` → Source Code
+- `results/` → Confusion matrices, learning curves
 
 
 ## Requirements
