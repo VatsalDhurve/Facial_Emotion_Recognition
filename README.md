@@ -67,14 +67,16 @@ Facial_Emotion_Recognition/
 │── README.md # Project documentation
 
 ## Requirements
-torch
+torch \n
 torchvision
 opencv-python
 numpy
 matplotlib
 scikit-learn
 
-##📈 Outputs
 
-Training/validation loss & accuracy curves
+
+## 📈 Outputs
+
+Training/validation loss & accuracy curves \n
 Confusion matrices per dataset
