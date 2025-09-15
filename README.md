@@ -56,7 +56,6 @@ A **custom dataset** was collected containing **2,421 thermal images** of **12 s
 - Implemented **weighted cross-entropy** to address class imbalance.  
 - Applied **data augmentation** (flips, rotations) for robustness.  
 - Integrated **early stopping** to prevent overfitting.  
-- Used **Grad-CAM** for model interpretability.  
 
 ---
 
@@ -67,7 +66,7 @@ Facial_Emotion_Recognition/
 │── README.md # Project documentation
 
 ## Requirements
-torch \n
+torch 
 torchvision
 opencv-python
 numpy
@@ -78,5 +77,6 @@ scikit-learn
 
 ## 📈 Outputs
 
-Training/validation loss & accuracy curves \n
+Training/validation loss & accuracy curves
+
 Confusion matrices per dataset
