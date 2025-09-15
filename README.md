@@ -1,53 +1,80 @@
-# Facial Emotion Recognition (FER) using Deep Learning
+# Facial Emotion Recognition using Thermal Images  
 
-This repository contains experiments on **Facial Emotion Recognition** using two datasets:
-1. **KTFE Dataset** – trained using AlexNet
-2. **Proposed Dataset** – trained using ResNet18
-
-We evaluated and compared the performance of different models, achieving up to **72.1% accuracy on KTFE**.
+This repository contains source code and experimental outputs for **Facial Emotion Recognition (FER) using thermal images**. The project evaluates different deep learning models on two datasets: the **Kotani Thermal Facial Emotion (KTFE)** dataset and a **custom Proposed dataset**.  
 
 ---
 
-## 📂 Project Organization
-- `datasets/` → Documentation of datasets
-- `src/` → Training, evaluation, Grad-CAM, and utilities
-- `models/` → Saved model checkpoints
-- `results/` → Confusion matrices, Grad-CAM visualizations, learning curves
-- `notebooks/` → Exploratory experiments and analysis
+## 📊 Datasets  
+
+### 1) Kotani Thermal Facial Emotion (KTFE) Dataset  
+The **KTFE dataset** is a publicly available thermal FER dataset containing **1,880 thermal images** across six basic emotions.  
+
+- **Dataset Limitations**:  
+  - Severe **class imbalance** (e.g., 480 “Sad” vs. only 20 “Angry”).  
+  - High risk of **identity leakage** if subjects appear in both train and validation splits.  
+  - These issues can bias learning and lead to overfitting.  
+
+#### Class Distribution (Table I)  
+
+| Emotion   | Images |  
+|-----------|--------|  
+| Angry     | 20     |  
+| Disgust   | 220    |  
+| Fear      | 440    |  
+| Happy     | 460    |  
+| Sad       | 480    |  
+| Surprise  | 260    |  
+| **Total** | **1880** |  
 
 ---
 
-## 🔧 Features
-- AlexNet & ResNet18 fine-tuning
-- Weighted cross-entropy for class imbalance
-- Subject-wise stratified splitting
-- Early stopping & LR scheduling
-- Grad-CAM visualizations for explainability
+### 2) Proposed Dataset  
+A **custom dataset** was collected containing **2,421 thermal images** of **12 subjects** expressing six core emotions: angry, disgust, fear, happy, sad, and surprise.  
+
+- Captured in a **controlled setting** for consistency.  
+- Limitation: **small number of subjects**, affecting model generalization.  
 
 ---
 
-## 📊 Results
+## 🧠 Models & Results  
 
-| Dataset    | Model    | Accuracy | Macro F1 | Weighted F1 |
-|------------|----------|----------|----------|-------------|
-| KTFE       | AlexNet  | 72.1%    | 0.752    | 0.714       |
-| Proposed   | ResNet18 | XX%      | XX       | XX          |
+| Dataset   | Model       | Accuracy |  
+|-----------|------------|----------|  
+| KTFE      | AlexNet     | **72.1%** |  
+| KTFE      | ResNet18    | 65.0%   |  
+| Proposed  | ResNet50v2  | **75.0%** |  
+| Proposed  | Base CNN    | 46.3%   |  
 
-*(replace XX with your actual outputs)*
+- On **KTFE**, **AlexNet** performed best (72.1%), improved with **weighted cross-entropy** and **subject-wise stratified splits**.  
+- On the **Proposed dataset**, **ResNet50v2** generalized better with 75% accuracy.  
 
 ---
 
-## ⚡ Quick Start
-```bash
-# Clone repo
-git clone https://github.com/<your-username>/Facial-Emotion-Recognition.git
-cd Facial-Emotion-Recognition
+## 🚀 Key Contributions  
 
-# Install dependencies
-pip install -r requirements.txt
+- Designed a **subject-stratified splitting strategy** to prevent identity leakage.  
+- Implemented **weighted cross-entropy** to address class imbalance.  
+- Applied **data augmentation** (flips, rotations) for robustness.  
+- Integrated **early stopping** to prevent overfitting.  
+- Used **Grad-CAM** for model interpretability.  
 
-# Train AlexNet on KTFE
-python src/ktfe/train_alexnet.py --data "path/to/KTFE"
+---
 
-# Train ResNet18 on Proposed Dataset
-python src/proposed/train_resnet.py --data "path/to/Proposed"
+## 📂 Repository Structure  
+Facial_Emotion_Recognition/
+│── code/ # Training scripts, model definitions, utilities
+│── outputs/ # Logs, training curves, confusion matrices
+│── README.md # Project documentation
+
+## Requirements
+torch
+torchvision
+opencv-python
+numpy
+matplotlib
+scikit-learn
+
+##📈 Outputs
+
+Training/validation loss & accuracy curves
+Confusion matrices per dataset
